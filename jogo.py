@@ -4,6 +4,7 @@ from utils import readCSV
 filename = 'palavras.csv'
 
 class Jogo:
+
     def __init__(self, filename):
         self.palavras = readCSV(filename)
         self.palavraEscolhida = random.choice(self.palavras)
@@ -23,17 +24,25 @@ class Jogo:
     
     def feedback(self, tentativa):
         self.tentativas += 1
-        feedback = ['-'] * 5
+        feedback = ['X'] * self.tamanhoPalavra
+
+        palavraRestante = list(self.palavraEscolhida)
+
         for i, letra in enumerate(tentativa):
-            letra = letra.lower()
             if letra == self.palavraEscolhida[i]:
                 feedback[i] = 'O'
-            elif letra in self.palavraEscolhida:
+                palavraRestante[i] = None
+
+        for i, letra in enumerate(tentativa):          
+            if feedback[i] == 'O':
+                continue
+            if letra in palavraRestante:
                 feedback[i] = '/'
-            else:
-                feedback[i] = 'X'
+                palavraRestante[palavraRestante.index(letra)] = None
+
         return ''.join(feedback)
     
+
     def jogar(self):
         print('Bem-vindo ao jogo Termo! Adivinhe a palavra de ', self.tamanhoPalavra, 'letras')
         print('Você tem ', self.maxTentativas, 'tentativas')
@@ -59,10 +68,6 @@ class Jogo:
             if self.tentativas == self.maxTentativas:
                 print('Você perdeu! A palavra era', self.palavraEscolhida)
                 break
-
-
-
-
 
 
 
