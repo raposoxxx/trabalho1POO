@@ -15,8 +15,8 @@ class Jogo:
     def checkTentativa(self, tentativa):
         
 
-        if len(tentativa) != self.tamanhoPalavra:
-            raise ValueError('A palavra deve ter', self.tamanhoPalavra, 'letras') 
+        if len(tentativa) != self.tamanhoPalavra or not tentativa.isalpha():  #Checa se a tentativa tem o tamanho correto e se é uma palavra
+            raise ValueError(f"A palavra deve ter {self.tamanhoPalavra} letras") 
         
 
         return self.feedback(tentativa)
@@ -25,6 +25,7 @@ class Jogo:
         self.tentativas += 1
         feedback = ['-'] * 5
         for i, letra in enumerate(tentativa):
+            letra = letra.lower()
             if letra == self.palavraEscolhida[i]:
                 feedback[i] = 'O'
             elif letra in self.palavraEscolhida:
