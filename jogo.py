@@ -26,9 +26,9 @@ class Jogo:
         feedback = ['-'] * 5
         for i, letra in enumerate(tentativa):
             if letra == self.palavraEscolhida[i]:
-                feedback[i] = 'C'
+                feedback[i] = 'O'
             elif letra in self.palavraEscolhida:
-                feedback[i] = 'E'
+                feedback[i] = '/'
             else:
                 feedback[i] = 'X'
         return ''.join(feedback)
@@ -37,8 +37,8 @@ class Jogo:
         print('Bem-vindo ao jogo Termo! Adivinhe a palavra de ', self.tamanhoPalavra, 'letras')
         print('Você tem ', self.maxTentativas, 'tentativas')
         print('-----------------------------------')
-        print('C = Letra correta no lugar certo')
-        print('E = Letra correta no lugar errado')
+        print('O = Letra correta no lugar certo')
+        print('/ = Letra correta no lugar errado')
         print('X = Letra errada')
         
         while True:
@@ -47,7 +47,7 @@ class Jogo:
                 feedback = self.checkTentativa(tentativa)
                 print(feedback)
 
-                if feedback == 'C' * self.tamanhoPalavra:
+                if feedback == 'O' * self.tamanhoPalavra:
                     print('Parabéns! Você acertou a palavra!')
                     break
 
@@ -66,5 +66,7 @@ class Jogo:
 
 
 if __name__ == "__main__":
+
+
     jogo = Jogo('palavras.csv')
     jogo.jogar()
