@@ -3,10 +3,12 @@ import pygame
 pygame.init()
 
 white = (255, 255, 255)
-black = (0, 0, 0)
+gray = (48, 48, 48)
+green = (19, 122, 53)
     
 fps = 60
 timer = pygame.time.Clock()
+titleFont = pygame.font.Font('freesansbold.ttf', 56)
 
 class Tela():
 
@@ -29,7 +31,9 @@ class Tela():
     def produzirMatriz(self): # cria a matriz das palavras
         for col in range(0, 5):
             for row in range(0, 6):
-                pygame.draw.rect(self.screen, black, [col * 100, row * 100, 75, 75], 3, 5)
+                pygame.draw.rect(self.screen, gray, [col * 100 + 12, row * 100 + 12, 75, 75], 3, 5)
+                pieceText = titleFont.render(self.board[row][col], True, gray)
+                self.screen.blit(pieceText, (col * 100 + 35, row * 100 + 25))
 
 
 tela = Tela()
