@@ -12,7 +12,7 @@ class Jogo:
         self.tamanhoPalavra = 5
 
 
-    def escolherPalavra(self):
+    def escolherPalavra(self) -> str:
         palavraEscolhida = random.choice(self.palavras)
         return palavraEscolhida        
 
