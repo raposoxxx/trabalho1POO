@@ -5,12 +5,16 @@ filename = 'palavras.csv'
 
 class Jogo:
 
-    def __init__(self, filename):
-        self.palavras = readCSV(filename)
-        self.palavraEscolhida = random.choice(self.palavras)
+    def __init__(self):
+        self.palavras = readCSV('palavras.csv')
         self.tentativas = 0
         self.maxTentativas = 5
         self.tamanhoPalavra = 5
+
+
+    def escolherPalavra(self):
+        palavraEscolhida = random.choice(self.palavras)
+        return palavraEscolhida        
 
 
     def checkTentativa(self, tentativa):
@@ -74,5 +78,5 @@ class Jogo:
 if __name__ == "__main__":
 
 
-    jogo = Jogo('palavras.csv')
+    jogo = Jogo()
     jogo.jogar()
