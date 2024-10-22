@@ -1,7 +1,9 @@
 import pygame
+from tela import Tela
 from telajogo import TelaJogo
 
-tela = TelaJogo()
+tela = Tela()
+telajogo = TelaJogo()
 timer = pygame.time.Clock()
 fps = 60
 
@@ -11,16 +13,16 @@ class Sistema:
         running = True
         while running:
             
-            if tela.letters == 5:
+            if telajogo.letters == 5:
                 turnActive = False
-            if tela.letters < 5:
+            if telajogo.letters < 5:
                 turnActive = True
 
             timer.tick(fps)
             tela.produzirTela()
-            tela.produzirMatriz()            
-            tela.checarPalavra()
-            tela.preencherMatriz()
+            telajogo.produzirMatriz()            
+            telajogo.checarPalavra()
+            telajogo.preencherMatriz()
  
 
             for event in pygame.event.get():
@@ -28,21 +30,17 @@ class Sistema:
                     running = False
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_BACKSPACE and tela.letters > 0:
-                        tela.board[tela.turn][tela.letters - 1] = ' '
-                        tela.letters -= 1
+                        telajogo.board[telajogo.turn][telajogo.letters - 1] = ' '
+                        telajogo.letters -= 1
                     if event.key == pygame.K_TAB:
-                        
-                        tela.turn += 1
-                        tela.letters = 0
+                        telajogo.turn += 1
+                        telajogo.letters = 0
                         turnActive = True
                 if event.type == pygame.TEXTINPUT and turnActive:
                     entry = event.__getattribute__('text')
-                    tela.board[tela.turn][tela.letters] = entry.upper()
-                    tela.letters += 1
+                    telajogo.board[telajogo.turn][telajogo.letters] = entry.upper()
+                    telajogo.letters += 1
                 
-
-
-
 
             pygame.display.flip()
 

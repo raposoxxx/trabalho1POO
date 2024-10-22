@@ -4,8 +4,9 @@ from abc import ABC
 class Tela(ABC):
 
     def __init__(self) -> None:
-        self.white = (255, 255, 255)
         self.gray = (48, 48, 48)
+        self.white = (255, 255, 255)
+        self.lightgray = (104, 104, 104)
         self.green = (19, 122, 53)
         self.yellow = (220, 176, 53)
         self.WIDTH = 500
