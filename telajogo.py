@@ -15,6 +15,7 @@ turnActive = True
 class TelaJogo(Tela):
 
     def __init__(self):
+        super().__init__()
         self.board = [[" ", " ", " ", " ", " "],
                       [" ", " ", " ", " ", " "],
                       [" ", " ", " ", " ", " "],
