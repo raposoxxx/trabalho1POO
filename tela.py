@@ -1,7 +1,6 @@
 import pygame
-from abc import ABC
 
-class Tela(ABC):
+class Tela:
 
     def __init__(self) -> None:
         self.gray = (48, 48, 48)
