@@ -1,11 +1,11 @@
 import random
 import pygame
-from utils import readCSV
+from utils import readJson
 
 class Jogo:
 
     def __init__(self):
-        self.palavras = readCSV('palavras.csv')
+        self.palavras = readJson('palavras.json')
 
 
     def escolherPalavra(self) -> str:

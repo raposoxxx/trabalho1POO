@@ -1,6 +1,7 @@
 import pygame
 from tela import Tela
 from telajogo import TelaJogo
+from utils import csvToJson 
 
 tela = Tela()
 telajogo = TelaJogo()
@@ -10,6 +11,7 @@ fps = 60
 class Sistema:
     
     def run(self) -> None:
+        
         running = True
         while running:
             
