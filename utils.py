@@ -4,10 +4,18 @@ import unicodedata
 import pandas as pd
 
 def csvToJson(csv_filename, json_filename):
-    # Carrega o CSV, remove acentos, converte para minúsculas e remove espaços
+    
     df = pd.read_csv(csv_filename, header=None)
-    print(df)
-    df[0] = df[0].str.normalize('NFD').str.encode('ascii', 'ignore').str.decode('utf-8').str.lower().str.strip()
+
+    # Remove acentos, converte para minúsculas e remove espaços
+    df[0] = (
+        df[0]
+        .apply(lambda x: unicodedata.normalize('NFD', x).encode('ascii', 'ignore').decode('utf-8'))
+        .str.lower()
+        .str.strip()
+    )
+
+    # Salva o DataFrame no formato JSON
     df.to_json(json_filename, orient='records', lines=True)
 
 
