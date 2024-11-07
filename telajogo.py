@@ -4,7 +4,6 @@ from tela import Tela
 
 pygame.init()
 
-tela = Tela()
 jogo = Jogo()
 
 class TelaJogo(Tela):
@@ -24,13 +23,13 @@ class TelaJogo(Tela):
         # Usa a matriz de cores para desenhar cada quadrado na cor correta
         for col in range(5):
             for row in range(6):
-                color = getattr(tela, self.colors[row][col])  # Acessa a cor pela string na matriz de cores
+                color = getattr(self, self.colors[row][col])  # Acessa a cor pela string na matriz de cores
                 pygame.draw.rect(self.screen, color, [col * 100 + 12, row * 100 + 12, 75, 75], 0, 5)
 
     def preencherMatriz(self) -> None: # permite que letras sejam colocadas nos quadradinhos
         for col in range(5):
             for row in range(6):
-                pieceText = self.gameFont.render(self.board[row][col], True, tela.white)
+                pieceText = self.gameFont.render(self.board[row][col], True, self.white)
                 self.screen.blit(pieceText, (col * 100 + 30, row * 100 + 25))
 
     def checarPalavra(self) -> None:

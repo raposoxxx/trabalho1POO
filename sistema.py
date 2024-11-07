@@ -4,7 +4,6 @@ from telajogo import TelaJogo
 from telainicial import TelaInicial
 from utils import csvToJson 
 
-tela = Tela()
 telajogo = TelaJogo()
 telainicial = TelaInicial()
 timer = pygame.time.Clock()

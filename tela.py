@@ -1,6 +1,7 @@
 import pygame
 from abc import ABC, abstractmethod
-class Tela():
+
+class Tela(ABC):
 
     def __init__(self) -> None:
         self.gameFont = pygame.font.Font('freesansbold.ttf', 56)

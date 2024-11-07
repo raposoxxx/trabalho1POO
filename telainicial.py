@@ -1,8 +1,6 @@
 import pygame
 from tela import Tela
 
-tela = Tela()
-
 pygame.init()
 
 class TelaInicial(Tela):
