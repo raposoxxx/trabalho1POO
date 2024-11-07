@@ -12,7 +12,6 @@ class Tela():
         self.lightgray = (104, 104, 104)
         self.green = (19, 122, 53)
         self.yellow = (220, 176, 53)
-        self.black = (0, 0, 0)
         self.WIDTH = 500
         self.HEIGHT = 700
         self.screen = pygame.display.set_mode([self.WIDTH, self.HEIGHT])  # a tela é definida aqui

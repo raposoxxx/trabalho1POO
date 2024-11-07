@@ -34,7 +34,7 @@ class Sistema:
                     elif event.type == pygame.KEYDOWN:
                         # Alteramos exibirJogo para True quando a tecla é pressionada
                         exibirJogo = True
-
+                    
             else:
                 # Exibe a tela do jogo
                 telajogo.produzirTela()
@@ -47,8 +47,6 @@ class Sistema:
                 turnActive = False  # Desativa entradas até o próximo turno
             else:
                 turnActive = True  # Permite entradas enquanto a palavra não está completa
-            
-            telajogo.preencherMatriz()  # Exibe as letras no tabuleiro atual
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

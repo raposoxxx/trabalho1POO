@@ -48,10 +48,9 @@ class TelaJogo(Tela):
                 self.colors[self.turn][col] = "yellow"  # Armazena a cor
                 palavra_restante[palavra_restante.index(self.board[self.turn][col])] = None  # Marca como usada
 
-    def jogarTurno(self, letra) -> None:
+    def jogarTurno(self) -> None:
         # Adiciona letra ao tabuleiro e incrementa contador de letras
         if self.letters < 5:
-            self.board[self.turn][self.letters] = letra.upper()
             self.preencherMatriz()
             self.letters += 1
 
