@@ -14,6 +14,7 @@ class TelaJogo(Tela):
         self.colors = [["lightgray" for _ in range(5)] for _ in range(6)]  # Matriz para armazenar cores de cada quadrado
         self.turn = 0
         self.letters = 0
+        self.count = 0
         self.palavra = jogo.escolherPalavra().upper()
 
     def produzirTela(self) -> None: # produz tela do jogo
@@ -47,17 +48,19 @@ class TelaJogo(Tela):
                 self.colors[self.turn][col] = "yellow"  # Armazena a cor
                 palavra_restante[palavra_restante.index(self.board[self.turn][col])] = None  # Marca como usada
 
-    def jogarTurno(self) -> None:
-        # Adiciona letra ao tabuleiro e incrementa contador de letras
-        if self.letters < 5:
-            self.preencherMatriz()
-            self.letters += 1
+    def contador(self) -> int:
+        if self.palavra == self.board[self.turn]:
+            self.count += 1
+        
+        acertos = self.regularFont.render(f'Acertos: {self.count}', True, self.gray)
+        
 
-        # Verifica a palavra quando a linha atual está completa
-        if self.letters == 5:
-            self.checarPalavra()  # Dá feedback após tentativa completa
-            self.turn += 1        # Passa para o próximo turno
-            self.letters = 0      # Reseta o contador de letras
+    def jogarTurno(self) -> None: 
+        self.produzirTela()
+        self.produzirMatriz()
+        self.preencherMatriz() 
+
+
 
 
 

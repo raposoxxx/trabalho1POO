@@ -1,5 +1,4 @@
 import pygame
-from tela import Tela
 from telajogo import TelaJogo
 from telainicial import TelaInicial
 from utils import csvToJson 
@@ -31,14 +30,12 @@ class Sistema:
                     if event.type == pygame.QUIT:
                         running = False
                     elif event.type == pygame.KEYDOWN:
-                        # Alteramos exibirJogo para True quando a tecla é pressionada
+                        # Permite que a tela do jogo seja exibida
                         exibirJogo = True
                     
             else:
                 # Exibe a tela do jogo
-                telajogo.produzirTela()
-                telajogo.produzirMatriz()
-                telajogo.preencherMatriz()
+                telajogo.jogarTurno()
 
             # Verifica se a linha está completa e mostra o feedback
             if telajogo.letters == 5:
