@@ -2,7 +2,7 @@ import pygame
 from tela import Tela
 from telajogo import TelaJogo
 from telainicial import TelaInicial
-from utils import csvToJson 
+from utils import atualizar_vitorias
 
 telajogo = TelaJogo()
 telainicial = TelaInicial()
