@@ -4,7 +4,7 @@ from utils import readJson
 
 class Jogo:
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.palavras = readJson('palavras.json')
 
 

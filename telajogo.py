@@ -6,12 +6,10 @@ pygame.init()
 
 tela = Tela()
 jogo = Jogo()
-    
-titleFont = pygame.font.Font('freesansbold.ttf', 56)
 
 class TelaJogo(Tela):
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.board = [[" ", " ", " ", " ", " "] for _ in range(6)]
         self.colors = [["lightgray" for _ in range(5)] for _ in range(6)]  # Matriz para armazenar cores de cada quadrado
@@ -19,20 +17,23 @@ class TelaJogo(Tela):
         self.letters = 0
         self.palavra = jogo.escolherPalavra().upper()
 
-    def produzirMatriz(self):
+    def produzirTela(self) -> None: # produz tela do jogo
+        self.screen.fill(self.gray)
+
+    def produzirMatriz(self) -> None:
         # Usa a matriz de cores para desenhar cada quadrado na cor correta
         for col in range(5):
             for row in range(6):
                 color = getattr(tela, self.colors[row][col])  # Acessa a cor pela string na matriz de cores
                 pygame.draw.rect(self.screen, color, [col * 100 + 12, row * 100 + 12, 75, 75], 0, 5)
 
-    def preencherMatriz(self): # permite que letras sejam colocadas nos quadradinhos
+    def preencherMatriz(self) -> None: # permite que letras sejam colocadas nos quadradinhos
         for col in range(5):
             for row in range(6):
-                pieceText = titleFont.render(self.board[row][col], True, tela.white)
+                pieceText = self.gameFont.render(self.board[row][col], True, tela.white)
                 self.screen.blit(pieceText, (col * 100 + 30, row * 100 + 25))
 
-    def checarPalavra(self):
+    def checarPalavra(self) -> None:
         palavra_restante = list(self.palavra)  # Copia da palavra para modificar conforme checamos
         
         # Primeiro, para letras no lugar correto
@@ -47,7 +48,7 @@ class TelaJogo(Tela):
                 self.colors[self.turn][col] = "yellow"  # Armazena a cor
                 palavra_restante[palavra_restante.index(self.board[self.turn][col])] = None  # Marca como usada
 
-    def jogarTurno(self, letra):
+    def jogarTurno(self, letra) -> None:
         # Adiciona letra ao tabuleiro e incrementa contador de letras
         if self.letters < 5:
             self.board[self.turn][self.letters] = letra.upper()

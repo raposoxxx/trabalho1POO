@@ -1,10 +1,12 @@
 import pygame
 from tela import Tela
 from telajogo import TelaJogo
+from telainicial import TelaInicial
 from utils import csvToJson 
 
 tela = Tela()
 telajogo = TelaJogo()
+telainicial = TelaInicial()
 timer = pygame.time.Clock()
 fps = 60
 
@@ -14,11 +16,31 @@ class Sistema:
         
         running = True
         turnActive = True
+        exibirJogo = False
+
         while running:
-            timer.tick(fps)
-            tela.produzirTela()
-            telajogo.produzirMatriz()
-            
+
+            timer.tick(fps) # temporizador
+
+            if not exibirJogo:
+                # Exibe a tela inicial
+                telainicial.produzirTela()
+                telainicial.produzirInicio()
+
+                # Verifica eventos
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        running = False
+                    elif event.type == pygame.KEYDOWN:
+                        # Alteramos exibirJogo para True quando a tecla é pressionada
+                        exibirJogo = True
+
+            else:
+                # Exibe a tela do jogo
+                telajogo.produzirTela()
+                telajogo.produzirMatriz()
+                telajogo.preencherMatriz()
+
             # Verifica se a linha está completa e mostra o feedback
             if telajogo.letters == 5:
                 telajogo.checarPalavra()
@@ -48,6 +70,8 @@ class Sistema:
                         telajogo.board[telajogo.turn][telajogo.letters] = entry.upper()
                         telajogo.letters += 1
 
-            pygame.display.flip()
+                
+
+            pygame.display.flip() # flip() abre uma nova janela com o que foi implementado
 
         pygame.quit()

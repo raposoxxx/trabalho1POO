@@ -3,7 +3,7 @@ from utils import csvToJson
 import random
 
 
-def Teste():
+def Teste() -> None:
     csvToJson('palavras.csv', 'palavras.json')
 
 
