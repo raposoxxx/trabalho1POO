@@ -59,6 +59,7 @@ def podio(json_filename):
 
     # Ordena o DataFrame por número de vitórias em ordem decrescente
     df = df.sort_values(by="vitorias", ascending=False)
+    print(df.head(5))
 
     # Retorna as 3 primeiras linhas do DataFrame
     return df.head(5)
