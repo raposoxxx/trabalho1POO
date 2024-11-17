@@ -1,6 +1,7 @@
 import pygame
 from jogo import Jogo
 from tela import Tela
+from telavencedor import tela_vencedor
 
 pygame.init()
 
@@ -48,12 +49,14 @@ class TelaJogo(Tela):
                 self.colors[self.turn][col] = "yellow"  # Armazena a cor
                 palavra_restante[palavra_restante.index(self.board[self.turn][col])] = None  # Marca como usada
 
-    def contador(self) -> int:
-        if self.palavra == self.board[self.turn]:
-            self.count += 1
-        
-        acertos = self.regularFont.render(f'Acertos: {self.count}', True, self.gray)
-        
+    def contador(self) -> None:
+        if "".join(self.board[self.turn]) == self.palavra:  # Verifica se a palavra foi acertada
+            self.count += 1  # Incrementa o contador de acertos
+            pygame.display.update()  # Atualiza a tela antes de exibir a tela de vencedor
+            tela_vencedor("jogadores.json")  # Exibe a tela de vencedor para salvar o nome
+            pygame.quit()  # Fecha o jogo após registrar a vitória
+            exit()  # Encerra o programa
+
 
     def jogarTurno(self) -> None: 
         self.produzirTela()
