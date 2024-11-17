@@ -59,9 +59,21 @@ def podio(json_filename):
 
     # Ordena o DataFrame por número de vitórias em ordem decrescente
     df = df.sort_values(by="vitorias", ascending=False)
+    print(df.head(5))
 
     # Retorna as 3 primeiras linhas do DataFrame
     return df.head(5)
 
 
 
+def carregar_podio(json_filename):
+    try:
+        # Carrega os dados do JSON e ordena pela coluna de vitórias em ordem decrescente
+        df = pd.read_json(json_filename, lines=True)
+        df = df.sort_values(by="vitorias", ascending=False).reset_index(drop=True)
+
+        return df.head(5)
+    
+    except (ValueError, FileNotFoundError):
+        # Retorna um DataFrame vazio se o arquivo não existir ou estiver vazio
+        return pd.DataFrame(columns=["nome", "vitorias"])

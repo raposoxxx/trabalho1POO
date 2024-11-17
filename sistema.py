@@ -2,6 +2,7 @@ import pygame
 from telajogo import TelaJogo
 from telainicial import TelaInicial
 from utils import atualizar_vitorias
+from telafinal import TelaFinal
 
 telajogo = TelaJogo()
 telainicial = TelaInicial()
@@ -36,10 +37,14 @@ class Sistema:
             else:
                 # Exibe a tela do jogo
                 telajogo.jogarTurno()
-
+            
             # Verifica se a linha está completa e mostra o feedback
+            if telajogo.turn >= 6:
+                #telajogo.contador()
+                TelaFinal.exibir_podio("jogadores.json")
             if telajogo.letters == 5:
                 telajogo.checarPalavra()
+                telajogo.contador()
                 turnActive = False  # Desativa entradas até o próximo turno
             else:
                 turnActive = True  # Permite entradas enquanto a palavra não está completa
@@ -54,6 +59,7 @@ class Sistema:
                         telajogo.letters -= 1
                     # Inicia o próximo turno ao pressionar TAB
                     if event.key == pygame.K_TAB and telajogo.letters == 5:
+                        
                         telajogo.turn += 1
                         telajogo.letters = 0
                         turnActive = True  # Reativa entradas para o novo turno
