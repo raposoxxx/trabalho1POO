@@ -1,27 +1,7 @@
 import pygame
 import pandas as pd
 from telafinal import TelaFinal
-
-# Função para salvar o nome do jogador e adicionar ao ranking
-def salvar_vencedor(json_filename, nome_jogador):
-    try:
-        # Carrega o JSON se ele existir
-        df = pd.read_json(json_filename, lines=True)
-    except (ValueError, FileNotFoundError):
-        # Inicializa um DataFrame vazio se o arquivo estiver vazio ou não existir
-        df = pd.DataFrame(columns=["nome", "vitorias"])
-    
-    # Verifica se o jogador já está no ranking
-    if nome_jogador in df["nome"].values:
-        # Incrementa as vitórias do jogador existente
-        df.loc[df["nome"] == nome_jogador, "vitorias"] += 1
-    else:
-        # Adiciona o jogador com 1 vitória
-        novo_jogador = pd.DataFrame([{"nome": nome_jogador, "vitorias": 1}])
-        df = pd.concat([df, novo_jogador], ignore_index=True)
-    
-    # Salva o DataFrame atualizado no JSON
-    df.to_json(json_filename, orient="records", lines=True)
+from dados import salvar_vencedor
 
 # Função para exibir a tela do vencedor
 def tela_vencedor(json_filename):

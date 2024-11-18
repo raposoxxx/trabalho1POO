@@ -1,8 +1,5 @@
-from utils import readJson
-from utils import csvToJson
-import random
-from utils import atualizar_vitorias
-from utils import podio
+from dados import atualizar_vitorias
+from dados import podio
 
 
 def Teste() -> None:
