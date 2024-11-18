@@ -23,10 +23,6 @@ def readJson(filename) -> None:
     return df[0].tolist()
 
 
-import pandas as pd
-
-import pandas as pd
-
 def atualizar_vitorias(json_filename, nome_jogador):
     try:
         # Tenta carregar o JSON como DataFrame
