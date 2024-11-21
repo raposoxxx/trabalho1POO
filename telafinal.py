@@ -12,35 +12,27 @@ class TelaFinal(Tela):
     def produzirTela(self) -> None:
         self.screen.blit(self.finalbgimage, (0, 0))
 
-    def exibirPodio(json_filename):
-        pygame.init()
-        screen = pygame.display.set_mode((600, 400))
-        pygame.display.set_caption("Pódio")
+    def exibirPodio(self) -> None:
 
         # Carrega e ordena os jogadores
-        podio_df = carregarPodio(json_filename)
-
-        # Fontes e cores
-        font = pygame.font.Font(None, 36)
-        background_color = (30, 30, 30)
-        text_color = (255, 255, 255)
+        podio_df = carregarPodio('db/jogadores.json')
 
         # Loop de exibição do pódio
         running = True
         while running:
-            screen.fill(background_color)
+            self.produzirTela()
 
             # Exibe o título
-            title_surface = font.render("Pódio dos Jogadores", True, text_color)
-            screen.blit(title_surface, (200, 50))
+            title_surface = self.titleFont.render("ranking: ", True, self.gray)
+            self.screen.blit(title_surface, (110, 20))
 
             # Exibe os primeiros colocados
             for i, row in podio_df.iterrows():
                 if i >= 5:  # Mostra apenas o top 5
                     break
-                text = f"{i + 1}º - {row['nome']}: {row['vitorias']} vitórias"
-                text_surface = font.render(text, True, text_color)
-                screen.blit(text_surface, (100, 100 + i * 40))
+                text = f"{i + 1}º - {row['nome']}: ({row['vitorias']})"
+                text_surface = self.regularFont.render(text, True, self.gray)
+                self.screen.blit(text_surface, (130, 120 + i * 70))
 
             # Event loop para fechar o pódio
             for event in pygame.event.get():

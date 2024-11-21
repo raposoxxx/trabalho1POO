@@ -3,7 +3,7 @@ import pandas as pd
 from tela import Tela
 from telafinal import TelaFinal
 
-
+telafinal = TelaFinal()
 
 class TelaVencedor(Tela):
     def __init__(self) -> None:
@@ -13,7 +13,7 @@ class TelaVencedor(Tela):
         self.screen.fill(self.gray)
 
 # Função para salvar o nome do jogador e adicionar ao ranking
-    def salvarVencedor(self, json_filename, nome_jogador):
+    def salvarVencedor(self, json_filename, nome_jogador) -> None:
         try:
             # Carrega o JSON se ele existir
             df = pd.read_json(json_filename, lines=True)
@@ -34,7 +34,7 @@ class TelaVencedor(Tela):
         df.to_json(json_filename, orient="records", lines=True)
 
     # Função para exibir a tela do vencedor
-    def telaVencedor(self, json_filename):
+    def telaVencedor(self, json_filename) -> None:
         pygame.init()
         pygame.display.set_caption("Você Venceu!")
 
@@ -74,4 +74,4 @@ class TelaVencedor(Tela):
 
             pygame.display.flip()
 
-        TelaFinal.exibirPodio('db/jogadores.json')
+        telafinal.exibirPodio()
