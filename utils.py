@@ -19,7 +19,7 @@ def csvToJson(csv_filename, json_filename) -> None:
     df.to_json(json_filename, orient='records', lines=True)
 
 
-def readJson(filename) -> None:
+def readJson(filename) -> list:
     # Lê o JSON e retorna a coluna de palavras como lista
     df = pd.read_json(filename, orient='records', lines=True)
     return df[0].tolist()
