@@ -1,5 +1,4 @@
 import random
-import pygame
 from dados import readJson
 
 class Jogo:
