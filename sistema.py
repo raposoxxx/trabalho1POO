@@ -42,7 +42,7 @@ class Sistema:
             # Verifica se a linha está completa e mostra o feedback
             if telajogo.turn >= 6:
                 #telajogo.contador()
-                telafinal.exibir_podio("jogadores.json")
+                telafinal.exibirPodio()
             if telajogo.letters == 5:
                 telajogo.checarPalavra()
                 telajogo.contador()
