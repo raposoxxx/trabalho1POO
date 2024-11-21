@@ -1,5 +1,5 @@
 from sistema import Sistema
-from utils import csvToJson
+from dados import csvToJson
 
 sistema = Sistema()
 

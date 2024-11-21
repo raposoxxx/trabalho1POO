@@ -1,5 +1,3 @@
-import csv
-import json
 import unicodedata
 import pandas as pd
 
@@ -23,11 +21,6 @@ def readJson(filename) -> list:
     # Lê o JSON e retorna a coluna de palavras como lista
     df = pd.read_json(filename, orient='records', lines=True)
     return df[0].tolist()
-
-
-import pandas as pd
-
-import pandas as pd
 
 def atualizarVitorias(json_filename, nome_jogador):
     try:

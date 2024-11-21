@@ -1,7 +1,7 @@
 import pygame
 from telajogo import TelaJogo
 from telainicial import TelaInicial
-from utils import atualizarVitorias
+from dados import atualizarVitorias
 from telafinal import TelaFinal
 
 telajogo = TelaJogo()

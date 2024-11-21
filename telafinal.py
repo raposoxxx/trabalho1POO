@@ -1,6 +1,6 @@
 import pygame
 from tela import Tela
-from utils import carregarPodio
+from dados import carregarPodio
 
 pygame.init()
 
