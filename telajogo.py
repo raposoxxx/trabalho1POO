@@ -18,8 +18,7 @@ class TelaJogo(Tela):
         self.turn = 0
         self.letters = 0
         self.count = 0
-        #self.palavra = jogo.escolherPalavra().upper()
-        self.palavra = "perna".upper()
+        self.palavra = jogo.escolherPalavra().upper()
 
     def produzirTela(self) -> None: # produz tela do jogo
         self.screen.fill(self.gray)
