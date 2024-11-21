@@ -1,11 +1,12 @@
 import pygame
 from telajogo import TelaJogo
 from telainicial import TelaInicial
-from utils import atualizar_vitorias
+from utils import atualizarVitorias
 from telafinal import TelaFinal
 
 telajogo = TelaJogo()
 telainicial = TelaInicial()
+telafinal = TelaFinal()
 timer = pygame.time.Clock()
 fps = 60
 
@@ -41,7 +42,7 @@ class Sistema:
             # Verifica se a linha está completa e mostra o feedback
             if telajogo.turn >= 6:
                 #telajogo.contador()
-                TelaFinal.exibir_podio("jogadores.json")
+                telafinal.exibir_podio("jogadores.json")
             if telajogo.letters == 5:
                 telajogo.checarPalavra()
                 telajogo.contador()

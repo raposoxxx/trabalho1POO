@@ -29,7 +29,7 @@ import pandas as pd
 
 import pandas as pd
 
-def atualizar_vitorias(json_filename, nome_jogador):
+def atualizarVitorias(json_filename, nome_jogador):
     try:
         # Tenta carregar o JSON como DataFrame
         df = pd.read_json(json_filename, lines=True)
@@ -66,7 +66,7 @@ def podio(json_filename):
 
 
 
-def carregar_podio(json_filename):
+def carregarPodio(json_filename):
     try:
         # Carrega os dados do JSON e ordena pela coluna de vitórias em ordem decrescente
         df = pd.read_json(json_filename, lines=True)

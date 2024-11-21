@@ -1,7 +1,9 @@
 import pygame
 from jogo import Jogo
 from tela import Tela
-from telavencedor import tela_vencedor
+from telavencedor import TelaVencedor
+
+telavencedor = TelaVencedor()
 
 pygame.init()
 
@@ -16,7 +18,8 @@ class TelaJogo(Tela):
         self.turn = 0
         self.letters = 0
         self.count = 0
-        self.palavra = jogo.escolherPalavra().upper()
+        #self.palavra = jogo.escolherPalavra().upper()
+        self.palavra = "perna".upper()
 
     def produzirTela(self) -> None: # produz tela do jogo
         self.screen.fill(self.gray)
@@ -53,7 +56,7 @@ class TelaJogo(Tela):
         if "".join(self.board[self.turn]) == self.palavra:  # Verifica se a palavra foi acertada
             self.count += 1  # Incrementa o contador de acertos
             pygame.display.update()  # Atualiza a tela antes de exibir a tela de vencedor
-            tela_vencedor("jogadores.json")  # Exibe a tela de vencedor para salvar o nome
+            telavencedor.telaVencedor('db/jogadores.json')  # Exibe a tela de vencedor para salvar o nome
             pygame.quit()  # Fecha o jogo após registrar a vitória
             exit()  # Encerra o programa
 

@@ -5,7 +5,7 @@ from utils import readJson
 class Jogo:
 
     def __init__(self) -> None:
-        self.palavras = readJson('palavras.json')
+        self.palavras = readJson('db/palavras.json')
 
 
     def escolherPalavra(self) -> str:

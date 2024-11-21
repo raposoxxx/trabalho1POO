@@ -10,6 +10,7 @@ class Tela(ABC):
         self.green = (19, 122, 53)
         self.yellow = (220, 176, 53)
         self.gameFont = pygame.font.Font('freesansbold.ttf', 56)
+        self.smallGameFont = pygame.font.Font('freesansbold.ttf', 25)
         self.regularFont = pygame.font.Font('fonts/outwrite.ttf', 30)
         self.titleFont = pygame.font.Font('fonts/comicate.ttf', 76)
         self.bgImage = pygame.image.load('images/fundocaderno.jpg')

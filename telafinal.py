@@ -1,6 +1,6 @@
 import pygame
 from tela import Tela
-from utils import carregar_podio
+from utils import carregarPodio
 
 pygame.init()
 
@@ -12,13 +12,13 @@ class TelaFinal(Tela):
     def produzirTela(self) -> None:
         self.screen.blit(self.finalbgimage, (0, 0))
 
-    def exibir_podio(json_filename):
+    def exibirPodio(json_filename):
         pygame.init()
         screen = pygame.display.set_mode((600, 400))
         pygame.display.set_caption("Pódio")
 
         # Carrega e ordena os jogadores
-        podio_df = carregar_podio(json_filename)
+        podio_df = carregarPodio(json_filename)
 
         # Fontes e cores
         font = pygame.font.Font(None, 36)
