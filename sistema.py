@@ -60,16 +60,18 @@ class Sistema:
                         telajogo.letters -= 1
                     # Inicia o próximo turno ao pressionar TAB
                     if event.key == pygame.K_TAB and telajogo.letters == 5:
-                        
                         telajogo.turn += 1
                         telajogo.letters = 0
                         turnActive = True  # Reativa entradas para o novo turno
                 # Recebe letras apenas se turnActive estiver True
                 if event.type == pygame.TEXTINPUT and turnActive:
                     entry = event.__getattribute__('text')
-                    if telajogo.letters < 5:  # Garante máximo de 5 letras por linha
-                        telajogo.board[telajogo.turn][telajogo.letters] = entry.upper()
-                        telajogo.letters += 1
+                    if entry.isalpha():  # Verifica se a entrada é uma letra
+                        if telajogo.letters < 5:  # Garante máximo de 5 letras por linha
+                            telajogo.board[telajogo.turn][telajogo.letters] = entry.upper()
+                            telajogo.letters += 1
+                    else:
+                        telajogo.mostrarMensagemErro()  # Mensagem opcional para feedback
 
                 
 

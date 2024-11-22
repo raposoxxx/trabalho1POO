@@ -65,6 +65,13 @@ class TelaJogo(Tela):
         self.produzirMatriz()
         self.preencherMatriz() 
 
+    def mostrarMensagemErro(self) -> None:
+        mensagem = "Apenas letras são permitidas."
+        text_surface = self.smallGameFont.render(mensagem, True, (255, 0, 0))
+        self.screen.blit(text_surface, (50, 650))  # Exibe na parte inferior da tela
+        pygame.display.flip()
+        pygame.time.delay(1000)
+        pygame.display.update()  # Atualiza a tela para mostrar a mensagem
 
 
 
